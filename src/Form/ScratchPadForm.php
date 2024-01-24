@@ -27,8 +27,6 @@ class ScratchPadForm extends FormBase
    */
   public function buildForm(array $form, FormStateInterface $form_state)
   {
-
-
     $form['workarea'] = [
       // set id wrapper
       '#prefix' => '<div id="workarea">',
@@ -93,9 +91,9 @@ class ScratchPadForm extends FormBase
 
     $gpt_manager = \Drupal::service('workshop.gpt_manager');
     $prompt = [
-      ["role" => "system", "content" => "Revise the code below to make it better."],
+      ["role" => "system", "content" => "The code we're working on is:"],
       ["role" => "user", "content" => $workarea],
-      ["role" => "system", "content" => "Update the code based on the following request: " . $update_command],
+      ["role" => "system", "content" => "Update the code maintaining original language and style based on the following request: " . $update_command],
     ];
     $gpt_updated_code = $gpt_manager->generateResponse($prompt, $model);
     // Use ajaxresponse for update the textarea code
