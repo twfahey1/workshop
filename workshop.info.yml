@@ -1,0 +1,5 @@
+name: workshop
+type: module
+description: Provides AI site building functionality.
+package: Custom
+core_version_requirement: ^9 || ^10

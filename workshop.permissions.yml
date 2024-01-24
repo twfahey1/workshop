@@ -1,0 +1,4 @@
+administer workshop configuration:
+  title: 'Administer workshop configuration'
+  description: 'Optional description.'
+  restrict access: true

@@ -1,0 +1,4 @@
+services:
+  workshop.gpt_manager:
+    class: Drupal\workshop\Services\GptManager
+    arguments: ['@http_client', '@config.factory']

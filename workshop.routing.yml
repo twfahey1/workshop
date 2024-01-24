@@ -1,0 +1,15 @@
+workshop.settings_form:
+  path: '/admin/config/system/workshop'
+  defaults:
+    _title: 'workshop settings'
+    _form: 'Drupal\workshop\Form\SettingsForm'
+  requirements:
+    _permission: 'administer workshop configuration'
+
+workshop.scratch_pad:
+  path: '/workshop/scratch-pad'
+  defaults:
+    _title: 'Scratch pad'
+    _form: 'Drupal\workshop\Form\ScratchPadForm'
+  requirements:
+    _permission: 'access scratch pad'
