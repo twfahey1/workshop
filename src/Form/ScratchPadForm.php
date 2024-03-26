@@ -38,7 +38,7 @@ class ScratchPadForm extends FormBase
 
     $form['update_command'] = [
       // textfield
-      '#type' => 'textfield',
+      '#type' => 'textarea',
       '#title' => $this->t('Update command'),
       '#description' => $this->t('The command to run to update the code.'),
       '#default_value' => '',
@@ -50,8 +50,9 @@ class ScratchPadForm extends FormBase
       '#title' => $this->t('Model'),
       '#description' => $this->t('The model to use for generating the response.'),
       '#options' => [
-        'gpt-3.5-turbo' => $this->t('GPT-3.5'),
-        'gpt-4' => $this->t('GPT-4'),
+        'gpt-3.5-turbo' => $this->t('gpt-3.5-turbo'),
+        'gpt-4' => $this->t('gpt-4'),
+        'gpt-4-1106-preview' => $this->t('gpt-4-1106-preview'),
       ],
       '#default_value' => 'gpt-3.5-turbo',
     ];

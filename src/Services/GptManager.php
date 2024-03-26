@@ -46,7 +46,7 @@ class GptManager {
    */
   public function getOpenAiApiKey() {
     try {
-      return $this->configManager->get('gpt.settings')->get('openai_api_key');
+      return $this->configManager->get('workshop.settings')->get('openai_api_key');
     }
     catch (ContainerNotInitializedException $e) {
       return '';
@@ -97,7 +97,6 @@ class GptManager {
     $body = [
       'model' => $model,
       'messages' => $prompt,
-      'temperature' => $temperature,
     ];
 
     try {
@@ -111,13 +110,28 @@ class GptManager {
 
       $data = json_decode($response->getBody(), TRUE);
       // Log the $data object so we can see the entire response.
-      \Drupal::logger('gpt')->debug(print_r($data, TRUE));
+      \Drupal::logger('workshop')->debug(print_r($data, TRUE));
       return $data['choices'][0]['message']['content'];
     }
     catch (RequestException $e) {
       // Lets log the whole e message
-      \Drupal::logger('gpt')->error(print_r($e->getMessage(), TRUE));
+      \Drupal::logger('workshop')->error(print_r($e->getMessage(), TRUE));
       return $e;
     }
+  }
+
+  /**
+   * The API can return a variety of responses. This function will take the response and return the code. 
+   * 
+   * @param mixed $input 
+   * @return array 
+   *  An array suitable for passing to GPT API.
+   */
+  public function getCodeFromOutput($input) {
+    $prompt = [
+      ["role" => "system", "content" => "Provide only the code from:"],
+      ["role" => "user", "content" => $input],
+    ];
+    return $prompt;
   }
 }
