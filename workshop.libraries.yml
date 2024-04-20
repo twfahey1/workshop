@@ -1,0 +1,11 @@
+# Define library for copy_to_clipboard that loads in js/copy-to-clipboard.js
+scratchpad_copy_to_clipboard:
+  version: 1.x
+  js:
+    js/scratchpad-copy-to-clipboard.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+ 

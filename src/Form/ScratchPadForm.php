@@ -28,13 +28,27 @@ class ScratchPadForm extends FormBase
   public function buildForm(array $form, FormStateInterface $form_state)
   {
     $form['workarea'] = [
-      // set id wrapper
-      '#prefix' => '<div id="workarea">',
-      '#suffix' => '</div>',
       '#type' => 'textarea',
       '#title' => $this->t('Code workspace'),
       '#required' => TRUE,
+      '#prefix' => '<div id="workarea">',
+      '#suffix' => '</div>',
+      '#attributes' => [
+        'class' => ['workarea-textarea'] // Additional classes for textarea
+      ],
     ];
+    
+    $form['copy_button'] = [
+      '#type' => 'button',
+      '#value' => $this->t('Copy to Clipboard'),
+      '#attributes' => [
+        'class' => ['copy-to-clipboard'],
+      ],
+    ];
+    
+    // Add the workshop/copy_to_clipboard lib
+    $form['#attached']['library'][] = 'workshop/scratchpad_copy_to_clipboard';
+
 
     $form['update_command'] = [
       // textfield
