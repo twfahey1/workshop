@@ -1,0 +1,16 @@
+{
+    "name": "twfahey1/workshop",
+    "type": "drupal-module",
+    "description": "Provides AI tools.",
+    "keywords": ["Drupal", "module"],
+    "homepage": "https://github.com/twfahey1/workshop",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Tyler Fahey",
+            "email": "twfahey1@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
